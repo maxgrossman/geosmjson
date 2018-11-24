@@ -5,7 +5,6 @@ import NodeJSON from '../src/interfaces/Node/NodeJSON';
 import DataSet from '../src/classes/DataSet';
 
 const ds: DataSet = DataSet.getInstance();
-
 const testTags: Tags = Tags.getInstance();
 
 const builtNode: NodeJSON  = {

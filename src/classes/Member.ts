@@ -9,10 +9,10 @@ export default class Member implements IMember {
   ref: number;
   role: string;
 
-  constructor(type: string, ref: number, role: string | undefined) {
+  constructor(type: string, ref: number, role: string = '') {
     this.type = type;
     this.ref = ref;
-    this.role = role || '';
+    this.role = role;
   }
 
   /**
@@ -40,5 +40,12 @@ export default class Member implements IMember {
       : this.type === 'way'
       ? ds.getWay(this.ref)
       : ds.getRelation(this.ref);
+  }
+  build(): IMember {
+    return {
+      type: this.type,
+      ref: this.ref,
+      role: this.role
+    } as IMember;
   }
 }

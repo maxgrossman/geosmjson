@@ -11,6 +11,7 @@ const tags: Tags = Tags.getInstance();
 const ds: DataSet = DataSet.getInstance();
 
 export default class Element implements IElement {
+  type: string;
   id: number = 0;
   uid: number = 0;
   tags: string[] = [];
@@ -31,9 +32,11 @@ export default class Element implements IElement {
   };
 
   constructor(elementType: string = Element.ELEMENT, id: number = ds.nextNewId()) {
+    this.type = elementType;
     this.props.set(Element.ELEMENT, new Set<string>());
     this.props.set(elementType, new Set<string>());
     this.setId(id);
+    this.setProp('tags');
   }
 
   /**
@@ -152,6 +155,10 @@ export default class Element implements IElement {
    */
   public getId(): number {
     return this.id;
+  }
+
+  public getType() : string {
+    return this.type;
   }
 
   /**
